@@ -10,3 +10,5 @@ Feature: Caracteristica ejemplo de pruebas restful
   Scenario: Listado de estudiantes - responde 200
     Given Consulto el servicio GET "http://localhost:8282/student/list"
     Then El codigo de estado de la respuesta es 200
+     Then El codigo de estado de la respuesta es 200
+      Then El codigo de estado de la respuesta es 200
