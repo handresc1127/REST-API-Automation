@@ -8,6 +8,6 @@ Feature: Caracteristica ejemplo de pruebas restful
   Para probar automatizamente servicios REST
 
   Scenario: Listado de estudiantes - responde 200
-    Given Consulto el servicio GET "http://localhost:8282/student/list"
+    Given Consulto el servicio GET "http://localhost:8282/student/list" 
     Then El codigo de estado de la respuesta es 200
   
