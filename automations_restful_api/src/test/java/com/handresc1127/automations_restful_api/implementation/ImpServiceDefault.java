@@ -3,6 +3,7 @@ package com.handresc1127.automations_restful_api.implementation;
 import com.google.gson.JsonObject;
 
 import io.restassured.RestAssured;
+//import io.restassured.matcher.ResponseAwareMatcher;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import net.serenitybdd.rest.SerenityRest;
@@ -33,18 +34,20 @@ public class ImpServiceDefault {
 	}
 	
 public static void accederServicioPost(String serviceUrl) {
-	RestAssured.baseURI =serviceUrl;
+	RestAssured.baseURI = "https://test.api.tigo.com/v2/oauth/token";
 	 RequestSpecification request = RestAssured.given();
-	 request.header("Authorization","Basic  V1FnS3YydjBQMEJzSUQ3TVJjb0dtZ1E4QXQ4S0czUTc6MzdNekJERzFjVVFOMXhTNQ==" );
+	
+	 request.header("Authorization","Basic V1FnS3YydjBQMEJzSUQ3TVJjb0dtZ1E4QXQ4S0czUTc6MzdNekJERzFjVVFOMXhTNQ==" );
 	 
 	 JsonObject loginCredentials = new JsonObject();
      loginCredentials.addProperty("grant_type", "client_credentials");
      loginCredentials.addProperty("scope", "upselling");
-	 request.body(loginCredentials.toString());
-	
-	 Response response = request.post("/v2/oauth/token");
-	 int statusCode = response.getStatusCode();
-	 System.out.println("The status code recieved: " + statusCode);
+	 request.body(loginCredentials. toString ( ) );
+	 System.out.println(loginCredentials);
+	 System.out.println(request.toString());
+	 
+	 
+
 	 
 }
 //	public static void token(String service) {
