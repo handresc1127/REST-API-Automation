@@ -19,4 +19,8 @@ public class DefDefault {
 		ImpServiceDefault.statusCode(statusCode);
 	}
 
+	@Given("^Consulto el servicio POST \"([^\"]*)\"$")
+	public void consulto_el_servicio_POST(String service) {
+	    ImpServiceDefault.token(service);
+	}
 }
