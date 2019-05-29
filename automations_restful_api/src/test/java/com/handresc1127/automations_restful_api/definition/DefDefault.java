@@ -20,7 +20,14 @@ public class DefDefault {
 	}
 
 	@Given("^Consulto el servicio POST \"([^\"]*)\"$")
-	public void consulto_el_servicio_POST(String service) {
-	    ImpServiceDefault.token(service);
+	public void consulto_el_servicio_POST(String serviceUrl) {
+	    ImpServiceDefault.accederServicioPost(serviceUrl);
 	}
+	
+	@Given("^Obtengo el dato \"([^\"]*)\"$")
+	public void obtengo_el_dato(String dato) {
+	//	ImpServiceDefault.obtenerDato(dato);
+	}
+
+	
 }
