@@ -46,27 +46,26 @@ public static void accederServicioPost(String serviceUrl) {
 	 System.out.println(request.toString());
 	 System.out.println(request.get());
 	 Response response=request.get();
-	 ResponseBody body=response.getBody();
+	 response.getBody();
 	 System.out.println(request.response());
 	 System.out.println(response.getBody());
 	 System.out.println(response);
 	 
 
 }
-//	public static void token(String service) {
-//		Response response =  
-//		        RestAssured.given().
-//		            header("Content-Type", "application/json").
-//		            body(loginPayload).
-//		        when().
-//		            post("/login").
-//		        then().
-//		            log().ifError().
-//		            statusCode(200).
-//		            contentType("application/vnd.api+json").
-//		            body("$", hasKey("access_token")).                                   //authorization_token is present in the response
-//		        extract().response();
-//	}
-//	String auth_token = response.path("access_token").toString();
-//
+	public static void token(String service) {
+		RestAssured.baseURI=service;
+		
+		SerenityRest
+		.given().log().all()
+		.header("Authorization", "Basic V1FnS3YydjBQMEJzSUQ3TVJjb0dtZ1E4QXQ4S0czUTc6MzdNekJERzFjVVFOMXhTNQ==")
+		.formParams("grant_type", "client_credentials")
+		.when().log().all()
+		.post()
+		.then().log().all()
+		.statusCode(200)
+		;
+	}
+	
+
 }

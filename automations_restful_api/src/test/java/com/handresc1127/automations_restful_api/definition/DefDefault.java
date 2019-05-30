@@ -21,7 +21,7 @@ public class DefDefault {
 
 	@Given("^Consulto el servicio POST \"([^\"]*)\"$")
 	public void consulto_el_servicio_POST(String serviceUrl) {
-	    ImpServiceDefault.accederServicioPost(serviceUrl);
+		ImpServiceDefault.token(serviceUrl);
 	}
 	
 	@Given("^Obtengo el dato \"([^\"]*)\"$")
