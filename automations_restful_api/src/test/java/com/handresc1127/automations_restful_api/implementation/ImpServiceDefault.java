@@ -78,9 +78,17 @@ public class ImpServiceDefault {
 		request.post();
 		Response response = request.post();
 		String body = response.getBody().asString();
-		 System.out.println("Response body: " + body);
+		String [] partes = body.split(",");
+		String access_token = "";
 		
+		for (int i = 0; i < partes.length; i++) {
+			if (partes[i].contains("access_token")) {
+				String [] parteFin = partes[i].split(":");
+				access_token = parteFin[1].replaceAll("\"", "");
+				access_token = access_token.replaceAll(" ", "");
+			}
+		}
+		 System.out.println("Response body: " + body);
+		 System.out.println("access_token: " + access_token);
 	}
-	
-
 }
