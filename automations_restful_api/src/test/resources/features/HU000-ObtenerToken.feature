@@ -8,6 +8,6 @@ Feature: HU002 Active Subscriptions v2 (sync) TigoWebShop
   Para probar que funcionen correctamente
 
   Scenario: Obtener Token
-  Given Consulto el servicio POST "https://test.api.tigo.com" 
+  Given Consulto el servicio POST "https://test.api.tigo.com/v2/oauth/token" 
   Then El codigo de estado de la respuesta es 200
   And Obtengo el dato "access_token"

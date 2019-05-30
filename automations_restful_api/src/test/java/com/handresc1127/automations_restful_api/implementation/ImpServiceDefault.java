@@ -3,8 +3,7 @@ package com.handresc1127.automations_restful_api.implementation;
 import com.google.gson.JsonObject;
 
 import io.restassured.RestAssured;
-//import io.restassured.matcher.ResponseAwareMatcher;
-import io.restassured.response.Response;
+import io.restassured.response.*;
 import io.restassured.specification.RequestSpecification;
 import net.serenitybdd.rest.SerenityRest;
 
@@ -34,7 +33,7 @@ public class ImpServiceDefault {
 	}
 	
 public static void accederServicioPost(String serviceUrl) {
-	RestAssured.baseURI = "https://test.api.tigo.com/v2/oauth/token";
+	RestAssured.baseURI = serviceUrl;
 	 RequestSpecification request = RestAssured.given();
 	
 	 request.header("Authorization","Basic V1FnS3YydjBQMEJzSUQ3TVJjb0dtZ1E4QXQ4S0czUTc6MzdNekJERzFjVVFOMXhTNQ==" );
@@ -45,10 +44,14 @@ public static void accederServicioPost(String serviceUrl) {
 	 request.body(loginCredentials. toString ( ) );
 	 System.out.println(loginCredentials);
 	 System.out.println(request.toString());
-	 
+	 System.out.println(request.get());
+	 Response response=request.get();
+	 ResponseBody body=response.getBody();
+	 System.out.println(request.response());
+	 System.out.println(response.getBody());
+	 System.out.println(response);
 	 
 
-	 
 }
 //	public static void token(String service) {
 //		Response response =  
