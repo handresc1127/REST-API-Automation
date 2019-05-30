@@ -11,7 +11,7 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 		//"src/test/resources/features/HU002-ActiveSubscriptionsV2(sync)TigoWebShop.feature" ,
 		"src/test/resources/features/HU000-ObtenerToken.feature"},
 
-		tags = { "" }, monochrome = true, plugin = { "pretty", "html:target/reports/html/",
+		tags = { "@Ejemplo1" }, monochrome = true, plugin = { "pretty", "html:target/reports/html/",
 				"junit:target/reports/junit.xml", "json:target/reports/cukes.json" })
 
 public class Runner {

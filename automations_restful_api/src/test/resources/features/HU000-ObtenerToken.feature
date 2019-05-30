@@ -8,4 +8,6 @@ Feature: HU002 Active Subscriptions v2 (sync) TigoWebShop
   Para probar que funcionen correctamente
 
   Scenario: Obtener Token
-  Given Consulto el servicio POST "https://test.api.tigo.com/v2/oauth/token" 
+  #Given Consulto el servicio POST "https://test.api.tigo.com/v2/oauth/token" 
+  Given Obtengo el token "https://test.api.tigo.com/v2/oauth/token" 
+

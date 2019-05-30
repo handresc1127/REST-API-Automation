@@ -24,9 +24,9 @@ public class DefDefault {
 		ImpServiceDefault.token(serviceUrl);
 	}
 	
-	@Given("^Obtengo el dato \"([^\"]*)\"$")
-	public void obtengo_el_dato(String dato) {
-	//	ImpServiceDefault.obtenerDato(dato);
+	@Given("^Obtengo el token \"([^\"]*)\"$")
+	public void obtengo_el_token(String serviceUrl) {
+		ImpServiceDefault.obtenerToken(serviceUrl);
 	}
 
 	
