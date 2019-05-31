@@ -9,8 +9,8 @@ public class DefDefault {
 
 
 	@Given("^Consulto el servicio GET \"([^\"]*)\"$")
-	public void consulto_el_servicio_GET(String service) {
-	    ImpServiceDefault.init(service);
+	public void consulto_el_servicio_GET(String serviceUrl) {
+	    ImpServiceDefault.init(serviceUrl);
 	}
 
 

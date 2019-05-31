@@ -7,18 +7,26 @@ import io.restassured.specification.RequestSpecification;
 import net.serenitybdd.rest.SerenityRest;
 
 public class ImpServiceDefault {
-	
-	public static void init(String serviceUrl){
+	static String access_token;
+	public static void init(String serviceUrl)
+	{
+
 		RestAssured.baseURI=serviceUrl;
-		
 	}
 	
 	public static void statusCode(int statusCode){
-		SerenityRest.given()
-		.when()
-		.get()
-		.then()
-		.statusCode(statusCode);
+		
+		String token= "Bearer "+ access_token;
+			SerenityRest
+			.given()
+			.header("Authorization", token)
+			.header("Content-Type", "application/x-www-form-urlencoded")
+			.when()
+			.get()
+			.then()
+			.statusCode(200);
+			
+		
 	}
 	
 	public static String textoMinusculasSinEspacios(String texto) {
@@ -31,28 +39,7 @@ public class ImpServiceDefault {
 		texto = texto.toLowerCase();
 		return texto;
 	}
-	
-//public static void accederServicioPost(String serviceUrl) {
-//	RestAssured.baseURI = serviceUrl;
-//	 RequestSpecification request = RestAssured.given();
-//	
-//	 request.header("Authorization","Basic V1FnS3YydjBQMEJzSUQ3TVJjb0dtZ1E4QXQ4S0czUTc6MzdNekJERzFjVVFOMXhTNQ==" );
-//	 
-//	 JsonObject loginCredentials = new JsonObject();
-//     loginCredentials.addProperty("grant_type", "client_credentials");
-//     loginCredentials.addProperty("scope", "upselling");
-//	 request.body(loginCredentials. toString ( ) );
-//	 System.out.println(loginCredentials);
-//	 System.out.println(request.toString());
-//	 System.out.println(request.get());
-//	 Response response=request.get();
-//	 response.getBody();
-//	 System.out.println(request.response());
-//	 System.out.println(response.getBody());
-//	 System.out.println(response);
-//	 
-//
-//}
+
 	public static void token(String service) {
 		RestAssured.baseURI=service;
 		
@@ -64,7 +51,6 @@ public class ImpServiceDefault {
 		.post()
 		.then()
 		.statusCode(200);
-
 		
 	}
 	public static void obtenerToken(String service) {
@@ -79,7 +65,7 @@ public class ImpServiceDefault {
 		Response response = request.post();
 		String body = response.getBody().asString();
 		String [] partes = body.split(",");
-		String access_token = "";
+		
 		
 		for (int i = 0; i < partes.length; i++) {
 			if (partes[i].contains("access_token")) {
@@ -88,7 +74,6 @@ public class ImpServiceDefault {
 				access_token = access_token.replaceAll(" ", "");
 			}
 		}
-		 System.out.println("Response body: " + body);
-		 System.out.println("access_token: " + access_token);
+
 	}
 }
