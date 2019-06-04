@@ -1,8 +1,15 @@
 package com.handresc1127.automations_restful_api.implementation;
 
 
+
+
+
+import static org.hamcrest.Matchers.*;
+
+import static io.restassured.RestAssured.*;
+
 import io.restassured.RestAssured;
-import io.restassured.response.*;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import net.serenitybdd.rest.SerenityRest;
 
@@ -75,5 +82,41 @@ public class ImpServiceDefault {
 			}
 		}
 
+	}
+	public static void contieneValor(String argumento, String valor) {
+		RestAssured.baseURI="https://test.api.tigo.com/v1/tigo/mobile/co/upselling/subscribers/573045797770/account";
+		
+//		RequestSpecification request= RestAssured.given();
+//		request.given();
+//		request.header("Authorization","Bearer "+ access_token);
+//		request.header("Content-Type", "application/x-www-form-urlencoded");
+//		request.when();
+//	
+//		Response response = request.get().assertThat();
+//		
+//		ResponseBody body = response.getBody();
+//		    
+//		    
+//		String bodyStringValue = body.asString();
+//		   
+//		Assert.assertTrue(bodyStringValue.contains("account.status"));
+//		JsonPath jsonPathEvaluator = response.jsonPath();
+//		String status = jsonPathEvaluator.get("account.status");
+//		Assert.assertTrue(status.equalsIgnoreCase("ACTIVE"));
+
+		System.out.println(argumento);
+		System.out.println(valor);
+		SerenityRest
+		.given()
+		.header("Authorization","Bearer "+ access_token)
+		.header("Content-Type", "application/x-www-form-urlencoded")
+		.when()
+		.get()
+		.then().log().all()
+		.assertThat()
+		.body("account.status", equalTo("ACTIVE"));
+
+	
+		
 	}
 }

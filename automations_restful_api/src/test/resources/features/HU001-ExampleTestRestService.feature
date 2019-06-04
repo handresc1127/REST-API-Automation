@@ -1,7 +1,7 @@
 #Author: Henry Andres Correa Correa
 #Keywords Summary :
 #Sample Feature Definition Template
-@Ejmplo1
+@Ejemplo1
 Feature: HU002 Caracteristica ejemplo de pruebas restful
   Como automatizador
   Quiero aprender el framework de cucumber

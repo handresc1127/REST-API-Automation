@@ -29,5 +29,10 @@ public class DefDefault {
 		ImpServiceDefault.obtenerToken(serviceUrl);
 	}
 
-	
+	@Then("^La variable \"([^\"]*)\" contiene el valor \"([^\"]*)\"$")
+	public void la_variable_contiene_el_valor(String argumento, String valor) {
+		ImpServiceDefault.contieneValor(argumento,valor);
+	    
+	}
+
 }
