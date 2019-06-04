@@ -9,5 +9,4 @@ Feature: HU002 SusbcriberAccountTipoDePlan
 
   Scenario: Consultar un servicio GET
     Given Consulto el servicio GET "https://test.api.tigo.com/v1/tigo/mobile/co/upselling/subscribers/573045797770/account"
-   # Then El codigo de estado de la respuesta es 200 
  		And La variable "account.status" contiene el valor "ACTIVE" 

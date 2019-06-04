@@ -1,7 +1,7 @@
 #Author: Melissa Pineda 
 #Keywords Summary :
 #Sample Feature Definition Template
-@Pasarela
+@MonitoreoPasarela
 Feature: HU002 SusbcriberAccountTipoDePlan
   Como automatizador
   Quiero realizar pruebas en api
