@@ -1,13 +1,6 @@
 package com.handresc1127.automations_restful_api.implementation;
 
-
-
-
-
 import static org.hamcrest.Matchers.*;
-
-import static io.restassured.RestAssured.*;
-
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -15,38 +8,33 @@ import net.serenitybdd.rest.SerenityRest;
 
 public class ImpServiceDefault {
 	static String access_token;
+	
 	public static void init(String serviceUrl)
 	{
 
 		RestAssured.baseURI=serviceUrl;
+		String token= "Bearer "+ access_token;
+		SerenityRest
+		.given()
+		.header("Authorization", token);
 	}
+    public static void enviarHeader(String argumento, String valor){
+		
 	
+		
+	}
 	public static void statusCode(int statusCode){
 		
 		String token= "Bearer "+ access_token;
 			SerenityRest
 			.given()
 			.header("Authorization", token)
-			.header("Content-Type", "application/x-www-form-urlencoded")
 			.when()
 			.get()
 			.then()
 			.statusCode(200);
-			
-		
 	}
 	
-	public static String textoMinusculasSinEspacios(String texto) {
-		String original = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ";
-		String ascii = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC";
-		for (int i = 0; i < original.length(); i++) {
-			texto = texto.replace(original.charAt(i), ascii.charAt(i));
-		}
-		texto = texto.replaceAll("\t|\n| ", "");
-		texto = texto.toLowerCase();
-		return texto;
-	}
-
 	public static void token(String service) {
 		RestAssured.baseURI=service;
 		
@@ -65,14 +53,16 @@ public class ImpServiceDefault {
 		
 		RequestSpecification request= SerenityRest.given();
 		request.given();
-		request.header("Authorization", "Basic V1FnS3YydjBQMEJzSUQ3TVJjb0dtZ1E4QXQ4S0czUTc6MzdNekJERzFjVVFOMXhTNQ==");
-		request.formParams("grant_type", "client_credentials");
+		//para recargas :request.header("Authorization", "Basic V1FnS3YydjBQMEJzSUQ3TVJjb0dtZ1E4QXQ4S0czUTc6MzdNekJERszFjVVFOMXhTNQ==");
+		request.header("Content-Type", "application/x-www-form-urlencoded");
+		request.queryParams("grant_type", "client_credentials");
+		request.formParams("client_id", "POGap0DUqp389f1r1YyBTCPRwBrx6GDY");
+		request.formParams("client_secret", "7gBoEQTmpclu8sEM");
 		request.when();
 		request.post();
 		Response response = request.post();
 		String body = response.getBody().asString();
 		String [] partes = body.split(",");
-		
 		
 		for (int i = 0; i < partes.length; i++) {
 			if (partes[i].contains("access_token")) {
@@ -81,42 +71,33 @@ public class ImpServiceDefault {
 				access_token = access_token.replaceAll(" ", "");
 			}
 		}
-
 	}
+	
 	public static void contieneValor(String argumento, String valor) {
-		RestAssured.baseURI="https://test.api.tigo.com/v1/tigo/mobile/co/upselling/subscribers/573045797770/account";
 		
-//		RequestSpecification request= RestAssured.given();
-//		request.given();
-//		request.header("Authorization","Bearer "+ access_token);
-//		request.header("Content-Type", "application/x-www-form-urlencoded");
-//		request.when();
-//	
-//		Response response = request.get().assertThat();
-//		
-//		ResponseBody body = response.getBody();
-//		    
-//		    
-//		String bodyStringValue = body.asString();
-//		   
-//		Assert.assertTrue(bodyStringValue.contains("account.status"));
-//		JsonPath jsonPathEvaluator = response.jsonPath();
-//		String status = jsonPathEvaluator.get("account.status");
-//		Assert.assertTrue(status.equalsIgnoreCase("ACTIVE"));
-
 		System.out.println(argumento);
 		System.out.println(valor);
 		SerenityRest
 		.given()
 		.header("Authorization","Bearer "+ access_token)
-		.header("Content-Type", "application/x-www-form-urlencoded")
+		.header("Accept","application/json")
+		
 		.when()
 		.get()
 		.then().log().all()
 		.assertThat()
-		.body("account.status", equalTo("ACTIVE"));
-
-	
-		
+		.body(argumento, equalTo(valor));
+			
 	}
+	public static String textoMinusculasSinEspacios(String texto) {
+		String original = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ";
+		String ascii = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC";
+		for (int i = 0; i < original.length(); i++) {
+			texto = texto.replace(original.charAt(i), ascii.charAt(i));
+		}
+		texto = texto.replaceAll("\t|\n| ", "");
+		texto = texto.toLowerCase();
+		return texto;
+	}
+
 }

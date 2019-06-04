@@ -10,7 +10,10 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 		
 		//"src/test/resources/features/HU001-ExampleTestRestService.feature" ,
         "src/test/resources/features/HU000-ObtenerToken.feature",
-		"src/test/resources/features/HU002-SusbcriberAccountTipoDePlan.feature"} ,
+        "src/test/resources/features/HU000-ObtenerTokenPasarela.feature",
+		"src/test/resources/features/HU002-SusbcriberAccountTipoDePlan.feature",
+		"src/test/resources/features/HU003-ObtenerDeudaVigenteMóvil.feature"} ,
+
 	
 
 		tags = { "" }, monochrome = true, plugin = { "pretty", "html:target/reports/html/",

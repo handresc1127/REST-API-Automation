@@ -32,7 +32,10 @@ public class DefDefault {
 	@Then("^La variable \"([^\"]*)\" contiene el valor \"([^\"]*)\"$")
 	public void la_variable_contiene_el_valor(String argumento, String valor) {
 		ImpServiceDefault.contieneValor(argumento,valor);
-	    
+	}
+	@Given("^Envio el header \"([^\"]*)\" con valor \"([^\"]*)\"$")
+	public void envio_el_header_con_valor(String argumento, String valor) {
+		ImpServiceDefault.enviarHeader(argumento,valor);
 	}
 
 }
