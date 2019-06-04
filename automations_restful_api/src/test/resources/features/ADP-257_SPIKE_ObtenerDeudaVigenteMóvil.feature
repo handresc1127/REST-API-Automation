@@ -9,6 +9,5 @@ Feature: HU002 SusbcriberAccountTipoDePlan
 
   Scenario: Consultar el servicio GET
     Given Consulto el servicio GET "https://prod.api.tigo.com/REST/GetAccountDebtVL1/CO/clients/3014439648"
-    And Envio el header "Accept" con valor "application/json" 
     Then El codigo de estado de la respuesta es 200 
  		And La variable "TigoApiResponse.status" contiene el valor "OK" 

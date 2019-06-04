@@ -8,31 +8,23 @@ import net.serenitybdd.rest.SerenityRest;
 
 public class ImpServiceDefault {
 	static String access_token;
-	
+	static RequestSpecification request;
 	public static void init(String serviceUrl)
 	{
-
-		RestAssured.baseURI=serviceUrl;
 		String token= "Bearer "+ access_token;
-		SerenityRest
-		.given()
-		.header("Authorization", token);
+		RestAssured.baseURI=serviceUrl;
+		request= SerenityRest.given().header("Authorization", token);
+
 	}
-    public static void enviarHeader(String argumento, String valor){
+    public static void enviarParams(String argumento, String valor){
 		
-	
+
+     request= request.given().queryParams(argumento, valor);
 		
 	}
 	public static void statusCode(int statusCode){
 		
-		String token= "Bearer "+ access_token;
-			SerenityRest
-			.given()
-			.header("Authorization", token)
-			.when()
-			.get()
-			.then()
-			.statusCode(200);
+	request.get().then().assertThat().statusCode(200);
 	}
 	
 	public static void token(String service) {
