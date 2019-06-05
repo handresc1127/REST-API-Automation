@@ -9,10 +9,17 @@ import net.serenitybdd.rest.SerenityRest;
 public class ImpServiceDefault {
 	static String access_token;
 	static RequestSpecification request;
+	
 	public static void init(String serviceUrl)
 	{
+		
+		RestAssured.basePath= serviceUrl;
+		
+
+	}
+	public static void token()
+	{
 		String token= "Bearer "+ access_token;
-		RestAssured.baseURI=serviceUrl;
 		request= SerenityRest.given().header("Authorization", token);
 
 	}
@@ -23,26 +30,14 @@ public class ImpServiceDefault {
 		
 	}
 	public static void statusCode(int statusCode){
-		
+	
 	request.get().then().assertThat().statusCode(200);
 	}
 	
-	public static void token(String service) {
-		RestAssured.baseURI=service;
+
+	public static void obtenerToken(String serviceUrl) {
 		
-		SerenityRest
-		.given()
-		.header("Authorization", "Basic V1FnS3YydjBQMEJzSUQ3TVJjb0dtZ1E4QXQ4S0czUTc6MzdNekJERzFjVVFOMXhTNQ==")
-		.formParams("grant_type", "client_credentials")
-		.when()
-		.post()
-		.then()
-		.statusCode(200);
-		
-	}
-	public static void obtenerToken(String service) {
-		RestAssured.baseURI=service;
-		
+		RestAssured.basePath= serviceUrl;
 		RequestSpecification request= SerenityRest.given();
 		request.given();
 		//para recargas :request.header("Authorization", "Basic V1FnS3YydjBQMEJzSUQ3TVJjb0dtZ1E4QXQ4S0czUTc6MzdNekJERszFjVVFOMXhTNQ==");
@@ -55,6 +50,7 @@ public class ImpServiceDefault {
 		Response response = request.post();
 		String body = response.getBody().asString();
 		String [] partes = body.split(",");
+		System.out.println(body);
 		
 		for (int i = 0; i < partes.length; i++) {
 			if (partes[i].contains("access_token")) {
@@ -63,23 +59,15 @@ public class ImpServiceDefault {
 				access_token = access_token.replaceAll(" ", "");
 			}
 		}
+		System.out.println(access_token);
 	}
 	
 	public static void contieneValor(String argumento, String valor) {
 		
 		System.out.println(argumento);
 		System.out.println(valor);
-		SerenityRest
-		.given()
-		.header("Authorization","Bearer "+ access_token)
-		.header("Accept","application/json")
-		
-		.when()
-		.get()
-		.then().log().all()
-		.assertThat()
-		.body(argumento, equalTo(valor));
-			
+		request.get().then().log().all().assertThat().body(argumento, equalTo(valor));
+	
 	}
 	public static String textoMinusculasSinEspacios(String texto) {
 		String original = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ";
