@@ -36,5 +36,9 @@ public class DefDefault {
 	public void envio_el_parametro_con_valor(String argumento, String valor) {
 		ImpServiceDefault.enviarParams(argumento,valor);
 	}
+	@Given("^Envio el header \"([^\"]*)\" con valor \"([^\"]*)\"$")
+	public void envio_el_header_con_valor(String argumento, String valor) {
+		ImpServiceDefault.enviarHeader(argumento,valor);
+	}
 
 }

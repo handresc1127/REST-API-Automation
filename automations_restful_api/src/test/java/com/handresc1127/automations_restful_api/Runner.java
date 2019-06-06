@@ -14,7 +14,7 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 		//"src/test/resources/features/ADP-258_SPIKE_MonitoreoServiciosMiCuentaHogar.feature"} ,
 
 	
-		tags = { "@Token" }, monochrome = true, plugin = { "pretty", "html:target/reports/html/",
+		tags = { "" }, monochrome = true, plugin = { "pretty", "html:target/reports/html/",
 				"junit:target/reports/junit.xml", "json:target/reports/cukes.json" })
 
 public class Runner {

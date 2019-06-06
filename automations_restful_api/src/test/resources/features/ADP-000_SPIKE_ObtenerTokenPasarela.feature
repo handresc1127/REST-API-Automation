@@ -8,6 +8,6 @@ Feature: HU000 Obtener Token
   Para acceder a las apis
 
   Scenario: Obtener Token
-  Given Obtengo el token "oauth/client_credential/accesstoken?grant_type=client_credentials"  
+  Given Obtengo el token "http://prod.api.tigo.com/oauth/client_credential/accesstoken?grant_type=client_credentials"  
   
 

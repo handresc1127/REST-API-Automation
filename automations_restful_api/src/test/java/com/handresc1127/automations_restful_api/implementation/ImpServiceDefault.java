@@ -13,13 +13,14 @@ public class ImpServiceDefault {
 	public static void init(String serviceUrl)
 	{
 		
-		RestAssured.basePath= serviceUrl;
+		RestAssured.baseURI= serviceUrl;
 		
 
 	}
 	public static void token()
 	{
 		String token= "Bearer "+ access_token;
+	
 		request= SerenityRest.given().header("Authorization", token);
 
 	}
@@ -29,6 +30,12 @@ public class ImpServiceDefault {
      request= request.given().queryParams(argumento, valor);
 		
 	}
+    public static void enviarHeader(String argumento, String valor){
+		
+
+        request= request.given().header(argumento, valor);
+   		
+   	}
 	public static void statusCode(int statusCode){
 	
 	request.get().then().assertThat().statusCode(200);
@@ -36,8 +43,8 @@ public class ImpServiceDefault {
 	
 
 	public static void obtenerToken(String serviceUrl) {
-		
-		RestAssured.basePath= serviceUrl;
+		RestAssured.baseURI= serviceUrl;
+		//RestAssured.basePath= serviceUrl;
 		RequestSpecification request= SerenityRest.given();
 		request.given();
 		//para recargas :request.header("Authorization", "Basic V1FnS3YydjBQMEJzSUQ3TVJjb0dtZ1E4QXQ4S0czUTc6MzdNekJERszFjVVFOMXhTNQ==");
