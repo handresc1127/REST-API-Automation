@@ -9,7 +9,7 @@ import net.serenitybdd.rest.SerenityRest;
 public class ImpServiceDefault {
 	static String access_token;
 	static RequestSpecification request;
-	
+
 	public static void init(String serviceUrl)
 	{
 		
@@ -36,11 +36,10 @@ public class ImpServiceDefault {
         request= request.given().header(argumento, valor);
    		
    	}
-	public static void statusCode(int statusCode){
-	
-	request.get().then().assertThat().statusCode(200);
-	}
-	
+
+	public static void statusCode(int statusCode) {
+		request.get().then().assertThat().statusCode(200);
+	}	
 
 	public static void obtenerToken(String serviceUrl) {
 		RestAssured.baseURI= serviceUrl;
