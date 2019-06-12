@@ -56,7 +56,7 @@ public class ImpServiceDefault {
 		Response response = request.post();
 		String body = response.getBody().asString();
 		String [] partes = body.split(",");
-		System.out.println(body);
+		
 		
 		for (int i = 0; i < partes.length; i++) {
 			if (partes[i].contains("access_token")) {
@@ -65,7 +65,7 @@ public class ImpServiceDefault {
 				access_token = access_token.replaceAll(" ", "");
 			}
 		}
-		System.out.println(access_token);
+	
 	}
 	
 	public static void contieneValor(String argumento, String valor) {
