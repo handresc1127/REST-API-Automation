@@ -49,8 +49,9 @@ public class ImpServiceDefault {
 		//para recargas :request.header("Authorization", "Basic V1FnS3YydjBQMEJzSUQ3TVJjb0dtZ1E4QXQ4S0czUTc6MzdNekJERszFjVVFOMXhTNQ==");
 		request.header("Content-Type", "application/x-www-form-urlencoded");
 		request.queryParams("grant_type", "client_credentials");
-		request.formParams("client_id", "POGap0DUqp389f1r1YyBTCPRwBrx6GDY");
-		request.formParams("client_secret", "7gBoEQTmpclu8sEM");
+		request.formParams("client_id", "8bj2qKTuJTw51dRKSfwfGtsfoQeTF6iB");
+		request.formParams("client_secret", "g7ShLPWpT25Aos8F");
+		request.formParams("trusted_client", "1");
 		request.when();
 		request.post();
 		Response response = request.post();

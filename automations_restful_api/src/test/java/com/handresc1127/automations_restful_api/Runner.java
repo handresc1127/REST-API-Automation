@@ -10,11 +10,11 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 		
         "src/test/resources/features/ADP-000_SPIKE_ObtenerTokenPasarela.feature",
 		 "src/test/resources/features/ADP-257_SPIKE_MonitoreoServiciosPasarela.feature",
-        "src/test/resources/features/ADP-258_SPIKE_MonitoreoServiciosMiCuentaMovil.feature"},
-		//"src/test/resources/features/ADP-258_SPIKE_MonitoreoServiciosMiCuentaHogar.feature"} ,
+        "src/test/resources/features/ADP-258_SPIKE_MonitoreoServiciosMiCuentaMovil.feature",
+		"src/test/resources/features/ADP-258_SPIKE_MonitoreoServiciosMiCuentaHogar.feature"} ,
 
 	
-		tags = { "" }, monochrome = true, plugin = { "pretty", "html:target/reports/html/",
+		tags = { "@MonitoreoMiCuenta" }, monochrome = true, plugin = { "pretty", "html:target/reports/html/",
 				"junit:target/reports/junit.xml", "json:target/reports/cukes.json" })
 
 public class Runner {
